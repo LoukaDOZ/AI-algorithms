@@ -4,7 +4,7 @@ Different AI algorithms for different game purposes
 
 ## Tree search algorithms
 
-[See code](tree_search_algorithms/code.c)
+[See](tree_search_algorithms/)
 
 Some tree search algorithms to solve a fifteen puzzle game such as :
 - Breadth first search
@@ -15,12 +15,12 @@ Some tree search algorithms to solve a fifteen puzzle game such as :
 
 ## MinMax and AlphaBeta algorithms
 
-[See code](minmax_alphabeta_algorithms/aima-python-master/games.py)
+[See](minmax_alphabeta_algorithms/)
 
 AI using MinMax and AlphaBeta algorithms to play to Tic Tac Toe and, by extension, m,n,k-game.
 
 ## Wordle solver
 
-[See code](wordle_solver/rep.pl)
+[See](wordle_solver/)
 
 AI that solves the wordle game using a bank of (french) words previously sorted by effectivness with the Information Theory algorithm.

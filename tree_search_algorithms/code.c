@@ -361,7 +361,7 @@ int breadth_first_search(board* start, int show_new_depth, int* treated_nodes_co
       (*treated_nodes_count)++;
 
       if(show_new_depth && !contains_depth(treated, n->depth))
-        printf("Nouvelle profondeur atteinte : %d\n", n->depth);
+        printf("New depth reached : %d\n", n->depth);
 
       if(is_final(b)) {
         final = n->depth;
@@ -399,7 +399,7 @@ int depth_first_search(board* start, int show_new_depth, int* treated_nodes_coun
       (*treated_nodes_count)++;
 
       if(show_new_depth && !contains_depth(treated, n->depth))
-        printf("Nouvelle profondeur atteinte : %d\n", n->depth);
+        printf("New depth reached : %d\n", n->depth);
 
       if(is_final(b)) {
         final = n->depth;
@@ -437,7 +437,7 @@ int depth_limited_search(board* start, int max_depth, int show_new_depth, int* t
       (*treated_nodes_count)++;
       
       if(show_new_depth && !contains_depth(treated, n->depth))
-        printf("Nouvelle profondeur atteinte : %d\n", n->depth);
+        printf("New depth reached : %d\n", n->depth);
 
       if(is_final(b)) {
         final = n->depth;
@@ -736,13 +736,13 @@ int algorithm_A(board* start, heuristic h, int show_new_depth, int* treated_node
 /* Afficher le résultat d'un algorithme */
 void printResult(int final, int treated_nodes_count, int plays_count, clock_t start_time) {
   if(final >= 0) { 
-    printf("\nConfiguration final trouvée à la profondeur : %d\n", final);
-    printf("Nombres de couts pour atteindre la configuration finale : %d\n", plays_count);
+    printf("\nWin configuration found a depth : %d\n", final);
+    printf("Number of moves to win : %d\n", plays_count);
   } else
-    printf("\nConfiguration finale non trouvée\n");
+    printf("\nWin configuration not found\n");
 
-  printf("Noeuds traités : %d\n", treated_nodes_count);
-  printf("Temps : %f secondes\n", (float) (clock() - start_time) / CLOCKS_PER_SEC);
+  printf("Treated nodes : %d\n", treated_nodes_count);
+  printf("Time : %f seconds\n", (float) (clock() - start_time) / CLOCKS_PER_SEC);
 }
 
 /* Afficher l'usage */
@@ -777,7 +777,7 @@ int checkArgValue(char* arg, int min, int max, int* ret) {
 /* 
   Usage : exec [-r <number of random moves>] [-d <max depth>] [-b <start board>] [-i] [-bf] [-df] [-dl] [-id] [-a]
   -r <number of random moves> : Nombre de mouvements pour initialiser un plateau (defaut : 100, min : 0, max : INT_MAX)
-  -d <max depth> : Profondeur max pour l'algorithme de Recherche en profondeur d'abord (defaut : 20, min : 0, max : INT_MAX)
+  -d <max depth> : Profondeur max pour l'algorithme de Recherche en profondeur limitée (defaut : 20, min : 0, max : INT_MAX)
   -b <start board> : Plateau de départ (defaut : 012345678)
   -i : Afficher une ligne dès qu'une nouvelle profondeur est atteinte (défaut : non)
   -bf : Algorithme de Recherche en largeur d'abord
@@ -802,7 +802,7 @@ int main(int argc, char* argv[]) {
       if(strcmp(argv[i], "-d") == 0) {
         if(argc > i + 1) {
           if(!checkArgValue(argv[i + 1], 0, INT_MAX, &max_depth)) {
-            printf("Argument invalide : %s\n", argv[i + 1]);
+            printf("Invalid argument : %s\n", argv[i + 1]);
             printUsage();
 
             return EXIT_FAILURE;
@@ -810,7 +810,7 @@ int main(int argc, char* argv[]) {
 
           i++;
         } else {
-          printf("Pas assez d'arguments\n");
+          printf("Not enough arguments\n");
           printUsage();
 
           return EXIT_FAILURE;
@@ -819,7 +819,7 @@ int main(int argc, char* argv[]) {
       } else if(strcmp(argv[i], "-r") == 0) {
         if(argc > i + 1) {
           if(!checkArgValue(argv[i + 1], 0, INT_MAX, &nb_random_moves)) {
-            printf("Argument invalide : %s\n", argv[i + 1]);
+            printf("Invalid argument : %s\n", argv[i + 1]);
             printUsage();
 
             return EXIT_FAILURE;
@@ -827,7 +827,7 @@ int main(int argc, char* argv[]) {
 
           i++;
         } else {
-          printf("Pas assez d'arguments\n");
+          printf("Not enough arguments\n");
           printUsage();
 
           return EXIT_FAILURE;
@@ -846,7 +846,7 @@ int main(int argc, char* argv[]) {
 
               for(int j = 0; j < len; j++) {
                 if(i != j && board[i] == board[j]) {
-                  printf("Argument invalide : %s\n", board);
+                  printf("Invalid argument : %s\n", board);
                   printUsage();
 
                   return EXIT_FAILURE;
@@ -856,7 +856,7 @@ int main(int argc, char* argv[]) {
               if(checkArgValue(c, 0, BOARD_SIZE - 1, &b_val))
                 start_board[i] = b_val;
               else {
-                printf("Argument invalide : %s\n", board);
+                printf("Invalid argument : %s\n", board);
                 printUsage();
 
                 return EXIT_FAILURE;
@@ -865,13 +865,13 @@ int main(int argc, char* argv[]) {
 
             i++;
           } else {
-            printf("Argument invalide : %s\n", argv[i + 1]);
+            printf("Invalid argument : %s\n", argv[i + 1]);
             printUsage();
 
             return EXIT_FAILURE;
           }
         } else {
-          printf("Pas assez d'arguments\n");
+          printf("Not enough arguments\n");
           printUsage();
 
           return EXIT_FAILURE;
@@ -896,7 +896,7 @@ int main(int argc, char* argv[]) {
           algorithms[AA] = 1;
       /* Algorithme inconnu */
       } else {
-        printf("Argument inconnu : %s\n", argv[i]);
+        printf("Unknown argument : %s\n", argv[i]);
         printUsage();
 
         return EXIT_FAILURE;
@@ -927,12 +927,12 @@ int main(int argc, char* argv[]) {
     }
   }
 
-  printf("========== Configuration de départ (%d mouvements aléatoires) ==========\n", nb_random_moves);
+  printf("========== Start board (%d random movements) ==========\n", nb_random_moves);
   display_board(b);
 
   /* Algorithme de Recherche en largeur d'abord */
   if(algorithms[BF]) {
-    printf("\n========== Recherche en largeur d'abord ==========\n");
+    printf("\n========== Breadth-first search ==========\n");
     treated_nodes_count = 0;
     plays_count = 0;
     start_time = clock();
@@ -943,7 +943,7 @@ int main(int argc, char* argv[]) {
 
   /* Algorithme de Recherche en profondeur d'abord */
   if(algorithms[DF]) {
-    printf("\n========== Recherche en profondeur d'abord ==========\n");
+    printf("\n========== Depth-first search ==========\n");
     treated_nodes_count = 0;
     plays_count = 0;
     start_time = clock();
@@ -954,7 +954,7 @@ int main(int argc, char* argv[]) {
 
   /* Algorithme de Recherche en profondeur limitée */
   if(algorithms[DL]) {
-    printf("\n========== Recherche en profondeur limitée (profondeur max = %d) ==========\n", max_depth);
+    printf("\n========== Depth limited search (max depth = %d) ==========\n", max_depth);
     treated_nodes_count = 0;
     plays_count = 0;
     start_time = clock();
@@ -965,7 +965,7 @@ int main(int argc, char* argv[]) {
 
   /* Algorithme de Recherche en profondeur itérative */
   if(algorithms[ID]) {
-    printf("\n========== Recherche en profondeur itérative ==========\n");
+    printf("\n========== Iterative deepening search ==========\n");
     treated_nodes_count = 0;
     plays_count = 0;
     start_time = clock();
@@ -979,7 +979,7 @@ int main(int argc, char* argv[]) {
     heuristic h[NUMBER_OF_HEURISTICS] = {&h1, &h2, &h3};
 
     for(int i = 0; i < NUMBER_OF_HEURISTICS; i++) {
-      printf("\n========== algorithme A* (heuristique = h%d) ==========\n", i + 1);
+      printf("\n========== A* algorithm (heuristic = h%d) ==========\n", i + 1);
       treated_nodes_count = 0;
       plays_count = 0;
       start_time = clock();
