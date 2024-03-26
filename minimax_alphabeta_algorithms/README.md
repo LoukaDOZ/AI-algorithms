@@ -5,6 +5,8 @@ AI using MinMax and AlphaBeta algorithms to play to Tic Tac Toe and, by extensio
 - [Source project README](aima-python-master/PROJECT.md)
 - [See code](aima-python-master/games.py)
 
+<img src="https://github.com/LoukaDOZ/AI-algorithms/assets/46566140/b915d90b-bc67-4a13-b26e-e7b0014f7b68" height="500" />
+
 ## Usage
 
 :warning: Require Python.
