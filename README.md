@@ -13,11 +13,11 @@ Some tree search algorithms to solve a fifteen puzzle game such as :
 - Iterative deepening search
 - A* algorithm
 
-## MinMax and AlphaBeta algorithms
+## Minimax and Alphabeta algorithms
 
-[See](minmax_alphabeta_algorithms/)
+[See](minimax_alphabeta_algorithms/)
 
-AI using MinMax and AlphaBeta algorithms to play to Tic Tac Toe and, by extension, m,n,k-game.
+AI using Minimax and Alphabeta algorithms to play to Tic Tac Toe and, by extension, k-in-a-row game.
 
 ## Wordle solver
 

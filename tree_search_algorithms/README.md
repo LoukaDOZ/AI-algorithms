@@ -1,7 +1,5 @@
 # Tree search algorithms
 
-[See code](./code.c)
-
 Some tree search algorithms to solve a fifteen puzzle game such as :
 - Breadth-first search
 - Depth-first search
@@ -9,7 +7,11 @@ Some tree search algorithms to solve a fifteen puzzle game such as :
 - Iterative deepening search
 - A* algorithm
 
+[See code](./code.c)
+
 ## Usage
+
+:warning: Require GCC.
 
 ```bash
 gcc -o exec code.c
