@@ -1,6 +1,6 @@
 # Wordle solver
 
-AI that solves the wordle game using a bank of 7980 (french) words previously sorted by effectivness with the Information Theory.
+AI that solves the (french) [Wordle](https://wordle.louan.me/) game using a bank of 7980 (french) words previously sorted by effectivness with the Information Theory.
 
 Information Theory inspirations :
 - [ScienceEtonnante](https://www.youtube.com/watch?v=iw4_7ioHWF4)
@@ -22,8 +22,8 @@ Information Theory inspirations :
     - [`data/`](sorting/data/) (data for calculations)
         - [`precalculated.py`](sorting/data/precalculated.py) (pre-calculated data for calculations speed)
     - [`res/`](sorting/res/) (results of the algorithm)
-        - [`sorted_words.pl`](sorting/data/sorted_words.pl) (words sorted by utility for solver)
-        - [`sort_info.txt`](sorting/data/sort_info.txt) (sorted words and their information value)
+        - [`sorted_words.pl`](sorting/res/sorted_words.pl) (words sorted by utility for solver)
+        - [`sort_info.txt`](sorting/res/sort_info.txt) (sorted words and their information value)
     - [`modules/`](sorting/modules/) (modules for calculations)
 
 ## Usage
@@ -90,7 +90,7 @@ python main.py
 ```
 :warning: Takes approximately 50 minutes to run !
 
-You can know check [`sorted_words.pl`](sorting/data/sorted_words.pl) and [`sort_info.txt`](sorting/data/sort_info.txt).
+You can know check [`sorted_words.pl`](sorting/res/sorted_words.pl) and [`sort_info.txt`](sorting/res/sort_info.txt).
 
 ## Limitations
 
@@ -104,6 +104,17 @@ Also, it does not distinguish between a common word and an uncommon word. It wou
 ```
 make run
 ```
+**First suggest**
+
+![Capture d’écran du 2024-03-29 14-03-28](https://github.com/LoukaDOZ/AI-algorithms/assets/46566140/86ab75e2-c933-4003-9c0c-735b82022024)
+
+**Game won**
+
+![Capture d’écran du 2024-03-29 14-01-33](https://github.com/LoukaDOZ/AI-algorithms/assets/46566140/d2fc043f-7514-42fe-b0d8-1c4b686b497f)
+
+**In Wordle**
+
+![Capture d’écran du 2024-03-29 14-08-06](https://github.com/LoukaDOZ/AI-algorithms/assets/46566140/48dfe69e-1d17-459f-b4bc-56c4e3e9167b)
 
 ### Manual play
 
