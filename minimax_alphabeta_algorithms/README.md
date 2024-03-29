@@ -35,11 +35,13 @@ Player types:
 | `minimax`   | Minimax player   |
 | `alphabeta` | Alphabeta player |
 
-(Optional) To use Jupiter notebooks, install following dependencies :
+(Optional) To use Jupyter notebooks, install following dependencies :
 ```bash
 pip install notebook matplotlib
 jupyter notebook
 ```
+
+Code and algoritm explanations at [aima-python-master/games.ipynb](aima-python-master/games.ipynb) via Jupyter notebook.
 
 ## Examples
 
