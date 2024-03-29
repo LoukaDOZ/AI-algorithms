@@ -23,4 +23,4 @@ AI using Minimax and Alphabeta algorithms to play to Tic Tac Toe and, by extensi
 
 [See](wordle_solver/)
 
-AI that solves the wordle game using a bank of (french) words previously sorted by effectivness with the Information Theory.
+AI that solves the Wordle game using a bank of (french) words previously sorted by effectivness with the Information Theory.
