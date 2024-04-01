@@ -109,7 +109,6 @@ function read_result() {
 }
 
 suggests=""
-words_file="$FIRST"
 
 for (( i = 0; i < $NB_TRIES; i++ )); do
     clear
