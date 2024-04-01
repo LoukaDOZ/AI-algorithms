@@ -10,39 +10,39 @@ Information Theory inspirations :
 
 - [`solver.pl`](solver.pl) (solver code)
 - [`interactive_play.sh`](interactive_play.sh) (easy interactive way to use the solver)
-- [`Makefile`](Makefile) (solver code)
-- [`README.md`](README.md) (solver code)
-- [`save/`](save/) (original words files)
-    - [`word_origin.pl`](save/word_origin.pl) (original words file)
-    - [`word.pl`](save/word.pl) (best words file from my first sorting algorithm (before rework))
+- [`Makefile`](Makefile)
+- [`README.md`](README.md)
 - [`sorting/`](sorting/) (sorting algorithm)
-    - [`main.py`](sorting/main.py) (sorting algorithm)
-    - [`tests.py`](sorting/tests.py) (tests)
-    - [`precalculations.py`](sorting/precalculations.py) (generate pre-calculated data)
-    - [`data/`](sorting/data/) (data for calculations)
-        - [`precalculated.py`](sorting/data/precalculated.py) (pre-calculated data for calculations speed)
-    - [`res/`](sorting/res/) (results of the algorithm)
-        - [`sorted_words.pl`](sorting/res/sorted_words.pl) (words sorted by utility for solver)
-        - [`sort_info.txt`](sorting/res/sort_info.txt) (sorted words and their information value)
-    - [`modules/`](sorting/modules/) (modules for calculations)
+    - [`main.c`](sorting/main.c) (sorting algorithm)
+    - [`Makefile`](sorting/Makefile)
+    - [`README.md`](sorting/README.md)
+    - [`source/`](sorting/source/) (static words files)
+        - [`words_origin.pl`](sorting/source/words_origin.pl) (original words file)
+        - [`words.pl`](sorting/source/words.pl) (best words file from my first sorting algorithm (before rework))
+        - [`best.pl`](sorting/source/best.pl) (current best words file) 
+    - [`result/`](sorting/result/) (results of the algorithm)
 
 ## Usage
 
 Using solver require [Prolog](https://www.swi-prolog.org/).\
-Using sorting algortithm requires Python.
+Using sorting algortithm requires GCC.
 
 ### Makefile
 
-| Command          | Description          |
-|------------------|----------------------|
-| `make run`       | Run interactive play |
-| `make install`   | Install prolog       |
-| `make uninstall` | Uninstall prolog     |
+| Command          | Description               |
+|------------------|---------------------------|
+| `make run`       | Run interactive play      |
+| `make install`   | Install Prolog            |
+| `make uninstall` | Uninstall Prolog          |
+| `make clean`     | Clean all execution files |
 
 ### Interactive play
 
-The interactive play is a Bash script running the `solver.pl` script automatically, suggesting you a word to play each turn and displaying the game in real time. When it asks you what was the result of the play, enter `g` (green), `o` (orange), `b` (black) for each letters, like : `gobbb`.\
-The script end when all letters a green, or when 6 turns have passed or when the solver is unable to suggest a word due to constraints (you mostly have made a mistake when entering the result).
+The interactive play is a Bash script running the `solver.pl` script automatically with the `sorting/source/best.pl` words file, suggesting you a word to play each turn and displaying the game in real time.
+
+When it asks you what was the result of the play, enter `g` (green), `o` (orange), `b` (black) for each letters, like : `gobbb`.
+
+The script end when all letters a green, or when 6 turns have passed or when the solver is unable to suggest a word due to constraints (you probably have made a mistake when entering the result).
 
 ### Use solver manually
 
@@ -56,41 +56,25 @@ Once in Prolog, use:
 consult("solver.pl").
 ```
 
-The solver automatically imports the words from `save/word.py`. This can be overwritten with the following (you can ignore the warning message) :
+The solver automatically imports the words from `sorting/source/best.py`. This can be overwritten with the following (you can ignore the warning message) :
 ```
 consult("path/to/words.pl").
 ```
 #### Main rules
 
-| Rule | Description |
-| - | - |
-| `suggest(P, OS, CS)` | Suggests a word to play, based on previously played words in `OS` and their coressponding obtained patterns in `CS` |
-| `play(S, PS)` | Simulates a game where `S` is the solution and `PS` all the propositions |
-| `success(S)` | Simulates a game where `S` is the solution tries to find it |
-| `number_of_solutions(N)` | Running a game simulation for each word where it is the solution, calculates the number of success |
+| Rule                     | Description                                                                                                         |
+|--------------------------|---------------------------------------------------------------------------------------------------------------------|
+| `suggest(P, OS, CS)`     | Suggests a word to play, based on previously played words in `OS` and their coressponding obtained patterns in `CS` |
+| `play(S, PS)`            | Simulates a game where `S` is the solution and `PS` all the propositions                                            |
+| `success(S)`             | Simulates a game where `S` is the solution tries to find it                                                         |
+| `number_of_solutions(N)` | Running a game simulation for each word where it is the solution, calculates the number of success                  |
 
 Words are represented by list of letters like : `[t, a, r, i, e]`. \
 Patterns are represented by list of colors like : `[green, orange, black, black, black]`.
 
 ### Sorting algorithm
 
-Place yourself in the `sorting/` folder :
-```
-cd sorting/
-```
-
-Run the pre-calculations if needed :
-```
-python precalculations.py
-```
-
-Run the sorting algoritm :
-```
-python main.py
-```
-:warning: Takes approximately 50 minutes to run !
-
-You can know check [`sorted_words.pl`](sorting/res/sorted_words.pl) and [`sort_info.txt`](sorting/res/sort_info.txt).
+See [sorting/README.md](sorting/README.md).
 
 ## Limitations
 
@@ -102,7 +86,7 @@ Also, it does not distinguish between a common word and an uncommon word. It wou
 ### Interactive play
 
 ```
-make run
+make
 ```
 **First suggest**
 
@@ -152,24 +136,4 @@ true .
 ```
 ?- number_of_solutions(N).
 N = 7295.
-```
-
-### Sorting
-
-```
-python precalculations.py
-```
-```
-Generating all 243 possible patterns
-Done in 00:00.000
-Generating all real patterns
-Done in 01:01.576
-```
-
-```
-python main.py
-```
-```
-loaded 7980 words
-[##########] 100.0% (7980/7980) 49:37.659 - Calculating H(words)
 ```

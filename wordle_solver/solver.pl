@@ -59,7 +59,7 @@ check_all(_, [], []).
 check_all(P, [O | OS], [C | CS]) :- check_one(P, O, C), !, check_all(P, OS, CS).
 
 % Question 12
-:- [save/word].
+:- [sorting/source/best].
 
 suggest(P, OS, CS) :- word(P), check_all(P, OS, CS).
 

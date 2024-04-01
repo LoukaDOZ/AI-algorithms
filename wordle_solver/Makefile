@@ -6,3 +6,6 @@ install:
 
 uninstall: clean
 	@sudo apt remove swi-prolog
+
+clean:
+	cd sorting && make clean

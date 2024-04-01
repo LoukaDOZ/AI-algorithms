@@ -2,8 +2,8 @@
 
 WORD_SIZE=5
 NB_TRIES=6
-WORDS_FILE="save/word.pl"
-SOLVER_FILE="solver.pl"
+WORDS_FILE="./sorting/source/best.pl"
+SOLVER_FILE="./solver.pl"
 WORD_PROMPT_REGEX_PARSER="^.*P = \[\([a-z]\), \([a-z]\), \([a-z]\), \([a-z]\), \([a-z]\)\].*$"
 WORD_REGEX_PARSER="^\([a-z]\)\([a-z]\)\([a-z]\)\([a-z]\)\([a-z]\)$"
 WORD_REGEX="^[a-z]{5}$"
@@ -109,6 +109,7 @@ function read_result() {
 }
 
 suggests=""
+words_file="$FIRST"
 
 for (( i = 0; i < $NB_TRIES; i++ )); do
     clear
