@@ -82,6 +82,8 @@ The first limitation is that the words are sorted before playing the game. For t
 
 Also, it does not distinguish between a common word and an uncommon word. It would be interesting to use word frequency data to favour common words, as they are more likely to be the solution.
 
+Finally, the best first word to play is "raies" with an information of 6.423248, and a `number_of_solutions(N)` of `N = 7251`. But this isn't the best score we can get. By placing first "tarie" we can go up to `N = 7306`.
+
 ## Examples
 ### Interactive play
 
