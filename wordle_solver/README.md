@@ -42,7 +42,7 @@ The interactive play is a Bash script running the `solver.pl` script automatical
 
 When it asks you what was the result of the play, enter `g` (green), `o` (orange), `b` (black) for each letters, like : `gobbb`.
 
-The script end when all letters a green, or when 6 turns have passed or when the solver is unable to suggest a word due to constraints (you probably have made a mistake when entering the result).
+The script end when all letters are green, or when 6 turns have passed or when the solver is unable to suggest a word due to constraints (you probably have made a mistake when entering the result).
 
 ### Use solver manually
 
